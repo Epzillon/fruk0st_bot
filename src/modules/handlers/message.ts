@@ -16,7 +16,7 @@ class MessageHandler {
         const content = message.content;
 
         // If message begins with "!" call command handler.
-        if (content[0] === "!") {
+        if (content.startsWith("!")) {
             this.ch.handle(message);
         }
     }
