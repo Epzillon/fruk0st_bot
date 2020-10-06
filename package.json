@@ -1,0 +1,24 @@
+{
+  "name": "fika_bot",
+  "version": "0.0.0",
+  "description": "A bot for the Fikabröd Discord server.",
+  "main": "build/bot.js",
+  "scripts": {
+    "start": "node build/bot.js",
+    "start-ts": "ts-node-dev bot.ts",
+    "build": "tsc -p .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "fika"
+  ],
+  "author": "EpiX0R",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^14.11.5",
+    "discord.js": "^12.3.1",
+    "tsc": "^1.20150623.0"
+  }
+}
