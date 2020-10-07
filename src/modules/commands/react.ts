@@ -3,7 +3,7 @@ import * as Discord from "discord.js";
 import { Command } from "../../models/commands";
 
 const react: Command = {
-    name: "!react",
+    name: "react",
     description: "Sends the reaction image <name>.",
     parameters: ["name"],
     execute: executeReact,

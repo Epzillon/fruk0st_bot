@@ -17,7 +17,7 @@ if ((process.env.DISCORD_TOKEN || "").length === 0) {
 
 import MessageHandler from "./modules/handlers/message";
 
-// Creates client interface
+// Create client interface and prepare handler(s)
 const client = new Discord.Client();
 const mh = new MessageHandler();
 

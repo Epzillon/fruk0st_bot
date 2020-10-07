@@ -4,7 +4,7 @@ import { Command } from "../../models/commands";
 import commands from "./index";
 
 const help: Command = {
-    name: "!help",
+    name: "help",
     description: "Sends this in DM's.",
     parameters: [],
     execute: executeHelp,
@@ -20,7 +20,7 @@ function executeHelp(message: Discord.Message): void {
     const text = "Hello, pussy. Here's the command list:\n\n";
 
     // Join each command and description to a list.
-    const commandDescriptions = commands.map((command) => `${command.name} - ${command.description}`);
+    const commandDescriptions = commands.map((command) => `${process.env.COMMAND_PREFIX}${command.name} - ${command.description}`);
 
     author.send(text + commandDescriptions.join("\n"));
 }

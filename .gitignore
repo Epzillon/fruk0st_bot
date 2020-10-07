@@ -1,6 +1,4 @@
 .git/
 node_modules/
 build/
-auth/auth.json
-settings/settings.json
 .env
