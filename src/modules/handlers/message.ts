@@ -1,6 +1,6 @@
 import * as Discord from "discord.js";
 
-import CommandHandler from "./CommandHandler";
+import CommandHandler from "./command";
 
 /**
  * Handler for messages. Used on Discord.Client "message" events.
@@ -13,10 +13,10 @@ class MessageHandler {
      * @param message A Discord message of the Discord.Message class.
      */
     public handle(message: Discord.Message) {
-        let content = message.content; 
-        
+        const content = message.content;
+
         // If message begins with "!" call command handler.
-        if (content[0] === "!") {
+        if (content.startsWith("!")) {
             this.ch.handle(message);
         }
     }

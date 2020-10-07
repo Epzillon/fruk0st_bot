@@ -1,7 +1,7 @@
 import * as Discord from "discord.js";
 
-import commands from "../commands/commands";
 import help from "../commands/help";
+import commands from "../commands";
 
 /**
  * Handler for commands. Used in the MessageHandler.
@@ -14,16 +14,16 @@ class CommandHandler {
      */
     public handle(message: Discord.Message) {
         // Structure message content
-        let commandStr = message.content.split(" ").shift();
-        let command = commands.find(command => command.name === commandStr);
-        
+        const commandStr = message.content.split(" ").shift();
+        const command = commands.find((command) => command.name === commandStr);
+
         // Run command if it exists else run help command
         if (command !== undefined) {
-            command.execute(message);
-        } else {
-            help.execute(message);
-        };
+            return command.execute(message);
+        }
+
+        help.execute(message);
     }
-};
+}
 
 export default CommandHandler;
