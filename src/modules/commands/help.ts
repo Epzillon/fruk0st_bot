@@ -5,24 +5,34 @@ import commands from "./index";
 
 const help: Command = {
     name: "help",
-    description: "Sends this in DM's.",
+    description: "Sends this message in DM's.",
     parameters: [],
     execute: executeHelp,
 };
 
 /**
- * Sends the list of available commands to the user who called the "!help" command;
+ * Sends the list of available commands to the user who called the "help" command.
  *
  * @param message The Discord.Message which called upon the command.
  */
 function executeHelp(message: Discord.Message): void {
     const author = message.author;
-    const text = "Hello, pussy. Here's the command list:\n\n";
+    const prefix = process.env.COMMAND_PREFIX;
+    const helpText = "Hello, fellow fika consumer. Here is the bot's available commands.\n\n";
 
-    // Join each command and description to a list.
-    const commandDescriptions = commands.map((command) => `${process.env.COMMAND_PREFIX}${command.name} - ${command.description}`);
+    // Join each command and description to a list with format "Xcommand <params...> - description".
+    const commandDescriptions = commands.map(
+        (command) => `${prefix}${command.name}`
+            + `${command.parameters.map((param) => ` <${param}>`)}`
+            + ` - `
+            + `${command.description}`
+    );
 
-    author.send(text + commandDescriptions.join("\n"));
+    // Add command descriptions separated by newline to help text.
+    helpText.concat(commandDescriptions.join("\n"));
+
+    // Send the help text to user who called "help" in DM.  
+    author.send(helpText);
 }
 
 export default help;

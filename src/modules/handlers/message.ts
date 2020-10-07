@@ -15,8 +15,8 @@ class MessageHandler {
     public handle(message: Discord.Message) {
         const content = message.content;
 
-        // If message begins with "!" call command handler.
-        if (content.startsWith("!")) {
+        // If message begins with the command prefix call command handler.
+        if (content[0] === process.env.COMMAND_PREFIX) {
             this.ch.handle(message);
         }
     }

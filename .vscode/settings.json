@@ -2,5 +2,6 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
-    "eslint.workingDirectories": []
+    "eslint.workingDirectories": [],
+    "compile-hero.disable-compile-files-on-did-save-code": true
 }

@@ -1,6 +1,5 @@
 import * as Discord from "discord.js";
 
-import help from "../commands/help";
 import commands from "../commands";
 
 /**
@@ -15,14 +14,13 @@ class CommandHandler {
     public handle(message: Discord.Message) {
         // Structure message content
         const commandStr = message.content.split(" ").shift();
-        const command = commands.find((command) => command.name === commandStr);
+        const command = commands.find((command) => process.env.COMMAND_PREFIX + command.name === commandStr);
 
-        // Run command if it exists else run help command
+
+        // Run command if it exists
         if (command !== undefined) {
             return command.execute(message);
         }
-
-        help.execute(message);
     }
 }
 
