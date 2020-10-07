@@ -7,8 +7,9 @@ An all-around bot for the Fikabröd Discord server.
 1. [Features](#features)\
 &nbsp; <!-- Indent -->
 1.1. [Feature List](#feature-list)
-2. [Installation](#installation)
-3. [Configuration](#configuration)
+2. [Pre-requisites](#pre-requisites)
+3. [Installation](#installation)
+4. [Configuration](#configuration)
 
 ## 1. Features
 <a name="features"></a>
@@ -23,12 +24,24 @@ towards the need of the Fikabröd Discord server.
 
 * Nothing so far.
 
+
+## 2. Pre-requisites
+<a name="pre-requisites"></a>
+
+To be able to use the bot the following software and tools are needed:
+
+* Node.js
+* npm
+
+
 ## 2. Installation
 <a name="installation"></a>
 
 1. Clone/download this repository
-2. Run `npm build`
-3. Run `npm start`
+2. Run `npm install`
+3. Run `npm build`
+4. Run `npm start`
+
 
 ## 3. Configuration
 <a name="configuration"></a>
