@@ -13,8 +13,6 @@ function executeReact(message: Discord.Message): void {
     const channel = message.channel;
     const parameters = message.content.split(" ");
     const name = parameters[1];
-
-    // if fileExists(name) > return file > sendMsg(attachment[file]);
 }
 
 export default react;

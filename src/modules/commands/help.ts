@@ -20,19 +20,15 @@ function executeHelp(message: Discord.Message): void {
     const prefix = process.env.COMMAND_PREFIX;
     const helpText = "Hello, fellow fika consumer. Here is the bot's available commands.\n\n";
 
-    // Join each command and description to a list with format "Xcommand <params...> - description".
-    const commandDescriptions = commands.map(
-        (command) => `${prefix}${command.name}`
-            + `${command.parameters.map((param) => ` <${param}>`)}`
-            + ` - `
-            + `${command.description}`
-    );
-
-    // Add command descriptions separated by newline to help text.
-    helpText.concat(commandDescriptions.join("\n"));
+    const commandDescriptions = commands.map((command) => {
+        const prefixedName = prefix + command.name;
+        const parameters = command.parameters.map((param) => ` <${param}>`).join("");
+        
+        return `${prefixedName + parameters} - ${command.description}`
+    });
 
     // Send the help text to user who called "help" in DM.  
-    author.send(helpText);
+    author.send(helpText + commandDescriptions.join("\n"));
 }
 
 export default help;
