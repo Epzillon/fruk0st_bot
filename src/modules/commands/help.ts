@@ -13,7 +13,7 @@ const help: Command = {
 /**
  * Sends the list of available commands to the user who called the "help" command.
  *
- * @param message The Discord.Message which called upon the command.
+ * @param {Discord.Message} message The Discord message which called upon the command.
  */
 function executeHelp(message: Discord.Message): void {
     const author = message.author;

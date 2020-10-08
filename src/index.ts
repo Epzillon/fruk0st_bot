@@ -14,7 +14,7 @@ if ((process.env.DISCORD_TOKEN || "").length === 0) {
 
 import MessageHandler from "./modules/handlers/message";
 
-// Create client interface and prepare handler(s)
+// Create client interface and prepare handler
 const client = new Discord.Client();
 const mh = new MessageHandler();
 
@@ -25,7 +25,15 @@ client.on("ready", () => {
 
 // Handle commands
 client.on("message", (message) => {
-    mh.handle(message);
+    // Only listen to developer message in development mode.
+    if (process.env.NODE_ENV === "dev") {
+        if (message.author.id === process.env.DEV_ID) {
+            mh.handle(message);
+        }
+    // Never listen to other bots
+    } else if (!message.author.bot) {
+        mh.handle(message);
+    }
 });
 
 // Login bot with token
