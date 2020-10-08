@@ -35,7 +35,7 @@ towards the need of the Fikabröd Discord server.
 
 * `help` - DM's the user the available commands for the bot.
 * `react [name]` - Displays a reaction image in the chat.
-* `react [add | remove] [name]` - Adds or removes a reaction image from the bot. [Admin Only]
+* `react [add | remove] [name]` - Adds (the attached image) or removes a reaction image from the bot. [Admin Only]
 
 
 ## 2. Pre-requisites
