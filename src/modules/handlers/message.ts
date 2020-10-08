@@ -16,7 +16,7 @@ class MessageHandler {
         const content = message.content;
 
         // If message begins with the command prefix call command handler.
-        if (content[0] === process.env.COMMAND_PREFIX) {
+        if (process.env.COMMAND_PREFIX && content.startsWith(process.env.COMMAND_PREFIX)) {
             this.ch.handle(message);
         }
     }

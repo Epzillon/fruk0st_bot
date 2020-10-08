@@ -30,7 +30,7 @@ client.on("message", (message) => {
         if (message.author.id === process.env.DEV_ID) {
             mh.handle(message);
         }
-    // Never listen to other bots
+        // Never listen to other bots
     } else if (!message.author.bot) {
         mh.handle(message);
     }
