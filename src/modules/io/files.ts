@@ -2,6 +2,8 @@ import * as Discord from "discord.js";
 import fs from "fs";
 import https from "https";
 
+const reactImgFolder = "./assets/img/reaction/";
+
 /**
  * Saves all the files contained within a Discord attachment collection.
  *
@@ -29,4 +31,15 @@ export function saveDiscordMessageAttachments(
             );
         });
     });
+}
+
+/**
+ * Retrieves all filenames from the reaction image folder.
+ *
+ * @returns {string[]} The filenames as strings in an array.
+ */
+export function getReactionImages(): string[] {
+    const files = fs.readdirSync(reactImgFolder);
+
+    return files;
 }
