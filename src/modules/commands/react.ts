@@ -24,19 +24,23 @@ const react: Command = {
  * @param {Discord.Message} message The Discord message which called the command.
  */
 function executeReact(message: Discord.Message): void {
-    const parameters = message.content.split(" ");
+    // Only serve commands if .env COMMAND_PREFIX is set.
+    if (process.env.COMMAND_PREFIX) {
+        const commandStr = message.content.split(process.env.COMMAND_PREFIX)[1];
+        const parameters = commandStr.split(" ");
 
-    // Switch based on sub-command
-    switch (parameters[1]) {
-        case "add":
-            addReaction(parameters[2], message);
-            break;
-        case "remove":
-            removeReaction(parameters[2], message);
-            break;
-        default:
-            sendReaction(parameters[1], message);
-            break;
+        // Switch based on sub-command
+        switch (parameters[1]) {
+            case "add":
+                addReaction(parameters[2], message);
+                break;
+            case "remove":
+                removeReaction(parameters[2], message);
+                break;
+            default:
+                sendReaction(parameters[1], message);
+                break;
+        }
     }
 }
 

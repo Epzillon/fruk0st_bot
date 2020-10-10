@@ -12,14 +12,17 @@ class CommandHandler {
      * @param message A Discord message of the Discord.Message class.
      */
     public handle(message: Discord.Message) {
-        // Structure message content
-        const commandStr = message.content.split(" ").shift();
-        const command = commands.find((command) => process.env.COMMAND_PREFIX + command.name === commandStr);
+        // Only serve commands if .env COMMAND_PREFIX is set.
+        if (process.env.COMMAND_PREFIX) {
+            // Find appropriate command from message
+            const prefixlessStr = message.content.split(process.env.COMMAND_PREFIX)[1];
+            const commandStr = prefixlessStr.split(" ").shift();
+            const command = commands.find((command) => command.name === commandStr);
 
-
-        // Run command if it exists
-        if (command !== undefined) {
-            return command.execute(message);
+            // Run command if it exists
+            if (command !== undefined) {
+                return command.execute(message);
+            }
         }
     }
 }

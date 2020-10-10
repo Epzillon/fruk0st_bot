@@ -16,19 +16,22 @@ const help: Command = {
  * @param {Discord.Message} message The Discord message which called upon the command.
  */
 function executeHelp(message: Discord.Message): void {
-    const author = message.author;
-    const prefix = process.env.COMMAND_PREFIX;
-    const helpText = "Hello, fellow fika consumer. Here is the bot's available commands.\n\n";
+    // Only serve commands if .env COMMAND_PREFIX is set.
+    if (process.env.COMMAND_PREFIX) {
+        const author = message.author;
+        const prefix = process.env.COMMAND_PREFIX;
+        const helpText = "Hello, fellow fika consumer. Here is the bot's available commands.\n\n";
 
-    const commandDescriptions = commands.map((command) => {
-        const prefixedName = prefix + command.name;
-        const parameters = command.parameters.map((param) => ` <${param}>`).join("");
-        
-        return `${prefixedName + parameters} - ${command.description}`
-    });
+        const commandDescriptions = commands.map((command) => {
+            const prefixedName = prefix + command.name;
+            const parameters = command.parameters.map((param) => ` <${param}>`).join("");
 
-    // Send the help text to user who called "help" in DM.  
-    author.send(helpText + commandDescriptions.join("\n"));
+            return `${prefixedName + parameters} - ${command.description}`;
+        });
+
+        // Send the help text to user who called "help" in DM.
+        author.send(helpText + commandDescriptions.join("\n"));
+    }
 }
 
 export default help;
