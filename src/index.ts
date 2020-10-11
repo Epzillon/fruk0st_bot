@@ -2,12 +2,15 @@
 import * as Discord from "discord.js";
 import dotenv from "dotenv";
 import chalk from "chalk";
+import constants from "./modules/constants";
+
+const { DISCORD_TOKEN, DEV_ID, NODE_ENV } = constants;
 
 // Loads env variables from a .env file
 dotenv.config();
 
 // If we are missing the discord token, throw error
-if ((process.env.DISCORD_TOKEN || "").length === 0) {
+if (DISCORD_TOKEN) {
     console.error(chalk.red("Missing .env variable 'DISCORD_TOKEN'. Create .env file or add it to the environment"));
     process.exit(1);
 }
@@ -26,8 +29,8 @@ client.on("ready", () => {
 // Handle commands
 client.on("message", (message) => {
     // Only listen to developer message in development mode.
-    if (process.env.NODE_ENV === "dev") {
-        if (message.author.id === process.env.DEV_ID) {
+    if (NODE_ENV === "dev") {
+        if (message.author.id === DEV_ID) {
             mh.handle(message);
         }
         // Never listen to other bots
@@ -37,4 +40,4 @@ client.on("message", (message) => {
 });
 
 // Login bot with token
-client.login(process.env.DISCORD_TOKEN);
+client.login(DISCORD_TOKEN);

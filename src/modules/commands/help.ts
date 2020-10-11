@@ -3,6 +3,10 @@ import * as Discord from "discord.js";
 import { Command } from "../../models/commands";
 import commands from "./index";
 
+import constants from "../constants";
+
+const { COMMAND_PREFIX } = constants;
+
 const help: Command = {
     name: "help",
     description: "Sends this message in DM's.",
@@ -17,21 +21,19 @@ const help: Command = {
  */
 function executeHelp(message: Discord.Message): void {
     // Only serve commands if .env COMMAND_PREFIX is set.
-    if (process.env.COMMAND_PREFIX) {
-        const author = message.author;
-        const prefix = process.env.COMMAND_PREFIX;
-        const helpText = "Hello, fellow fika consumer. Here is the bot's available commands.\n\n";
+    const author = message.author;
+    const prefix = COMMAND_PREFIX;
+    const helpText = "Hello, fellow fika consumer. Here is the bot's available commands.\n\n";
 
-        const commandDescriptions = commands.map((command) => {
-            const prefixedName = prefix + command.name;
-            const parameters = command.parameters.map((param) => ` <${param}>`).join("");
+    const commandDescriptions = commands.map((command) => {
+        const prefixedName = prefix + command.name;
+        const parameters = command.parameters.map((param) => ` <${param}>`).join("");
 
-            return `${prefixedName + parameters} - ${command.description}`;
-        });
+        return `${prefixedName + parameters} - ${command.description}`;
+    });
 
-        // Send the help text to user who called "help" in DM.
-        author.send(helpText + commandDescriptions.join("\n"));
-    }
+    // Send the help text to user who called "help" in DM.
+    author.send(helpText + commandDescriptions.join("\n"));
 }
 
 export default help;
