@@ -1,6 +1,9 @@
 import * as Discord from "discord.js";
 
 import CommandHandler from "./command";
+import constants from "../constants";
+
+const { COMMAND_PREFIX } = constants;
 
 /**
  * Handler for messages. Used on Discord.Client "message" events.
@@ -16,7 +19,7 @@ class MessageHandler {
         const content = message.content;
 
         // If message begins with the command prefix call command handler.
-        if (process.env.COMMAND_PREFIX && content.startsWith(process.env.COMMAND_PREFIX)) {
+        if (content.startsWith(COMMAND_PREFIX)) {
             this.ch.handle(message);
         }
     }
