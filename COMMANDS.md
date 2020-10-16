@@ -2,6 +2,8 @@
 
 Here are all the commands supported by the bot. This documentation explains usage and gives examples on certain commands.
 
+* All commands are to be preceded by the command prefix set up in the `.env` file.
+
 * Commands that has the `[ADMIN]` tag can only be used by a bot admin. (See [bot documentation](https://github.com/EpiX0R/fika_bot))
 
 * Parameters that begin with a question mark (`<?parameter>`) is an optional paramter.
