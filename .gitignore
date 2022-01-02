@@ -7,3 +7,4 @@ build/
 src/settings.json
 assets/img/reaction/*.*
 !assets/img/reaction/.gitkeep
+log/

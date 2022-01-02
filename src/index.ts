@@ -2,6 +2,7 @@
 import * as Discord from "discord.js";
 import chalk from "chalk";
 import constants from "./modules/constants";
+import logger from "./modules/io/logger";
 
 import MessageHandler from "./modules/handlers/message";
 
@@ -11,11 +12,11 @@ const mh = new MessageHandler();
 
 // Logs ready message
 client.on("ready", () => {
-    console.log(chalk.green("Fruk0st Bot is now serving lunch!"));
+    logger.success("Fruk0st Bot is now serving lunch!");
 
     if (constants.NODE_ENV === "dev") {
-        console.log(chalk.white("INFO: Developer mode is enabled."));
-        console.log(chalk.yellow("WARNING: DO NOT USE DEVELOPER MODE IN PRODUCTION."));
+        logger.info("Developer mode is enabled.");
+        logger.warning("DO NOT USE DEVELOPER MODE IN PRODUCTION.");
     }
 });
 
