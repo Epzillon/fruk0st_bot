@@ -1,7 +1,7 @@
 {
-  "name": "fika_bot",
-  "version": "0.0.0",
-  "description": "A bot for the Fikabröd Discord server",
+  "name": "fruk0st_bot",
+  "version": "0.0.1",
+  "description": "A bot for Fruk0stklubben Discord server",
   "main": "build/index.js",
   "scripts": {
     "build": "tsc",
@@ -12,7 +12,7 @@
   "keywords": [
     "discord",
     "bot",
-    "fika"
+    "fruk0stklubben"
   ],
   "author": "EpiX0R",
   "license": "MIT",
