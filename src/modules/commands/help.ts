@@ -1,26 +1,25 @@
 import * as Discord from "discord.js";
 
-import { Command } from "../../models/commands";
+import CommandInterface from "../../models/CommandInterface";
 
-const help: Command = {
-    name: "help",
-    description: "Sends this message in DM's.",
-    usage: [""],
-    execute: executeHelp,
-};
+class Help implements CommandInterface {
+    public name = "help";
+    public description = "Sends this message in DM's";
+    public usage = [""];
 
-/**
- * Sends the list of available commands to the user who called the "help" command.
- *
- * @param {Discord.Message} message The Discord message which called upon the command.
- */
-function executeHelp(message: Discord.Message): void {
-    const author = message.author;
+    /**
+     * Sends the list of available commands to the user who called the "help" command.
+     *
+     * @param {Discord.Message} message The Discord message which called upon the command.
+     */
+    public execute(message: Discord.Message): void {
+        const author = message.author;
 
-    // Send the help text to user who called "help" in DM.
-    author.send(
-        "Hello, stranger! You can find the descriptions and usage instructions for commands here:\nhttps://github.com/EpiX0R/fruk0st_bot/blob/master/COMMANDS.md",
-    );
+        // Send the help text to user who called "help" in DM.
+        author.send(
+            "Hello, stranger! You can find the descriptions and usage instructions for commands here:\nhttps://github.com/EpiX0R/fruk0st_bot/blob/master/COMMANDS.md",
+        );
+    }
 }
 
-export default help;
+export default Help;

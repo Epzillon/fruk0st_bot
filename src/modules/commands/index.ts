@@ -1,10 +1,20 @@
-import { Command } from "../../models/commands";
+import CommandInterface from "../../models/CommandInterface";
 
-import help from "./help";
-import react from "./react";
-import poll from "./poll";
-import lore from "./lore";
+import Help from "./Help";
+import React from "./React";
+import Poll from "./Poll";
+import Lore from "./Lore";
 
-const commands: Command[] = [help, react, poll, lore];
+let HelpCommand = new Help();
+let ReactCommand = new React();
+let PollCommand = new Poll();
+let LoreCommand = new Lore();
+
+const commands: CommandInterface[] = [
+    HelpCommand,
+    ReactCommand,
+    PollCommand,
+    LoreCommand
+];
 
 export default commands;
