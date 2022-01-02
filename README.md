@@ -1,6 +1,6 @@
 # Fika Bot (PLACEHOLDER)
 
-An all-around bot for the Fikabröd Discord server.
+An all-around bot for the Fruk0stkubben Discord server.
 
 ## Table of Content
 
@@ -23,7 +23,7 @@ An all-around bot for the Fikabröd Discord server.
 The PLACEHOLDER Bot is an all-around bot which
 features a little bit of everything. Features
 are mostly added upon request and are aimed
-towards the need of the Fikabröd Discord server.
+towards the need of the Fruk0stkubben Discord server.
 
 ### 1.1. Feature List
 <a name="feature-list"></a>
@@ -33,7 +33,7 @@ towards the need of the Fikabröd Discord server.
 ### 1.2. Command List
 <a name="command-list"></a>
 
-You can find the descriptions and usage instructions for commands [here](https://github.com/EpiX0R/fika_bot/blob/master/COMMANDS.md).
+You can find the descriptions and usage instructions for commands [here](https://github.com/EpiX0R/fruk0st_bot/blob/master/COMMANDS.md).
 
 
 ## 2. Pre-requisites

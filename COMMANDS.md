@@ -4,11 +4,11 @@ Here are all the commands supported by the bot. This documentation explains usag
 
 * All commands are to be preceded by the command prefix set up in the `.env` file.
 
-* Commands that has the `[ADMIN]` tag can only be used by a bot admin. (See [bot documentation](https://github.com/EpiX0R/fika_bot))
+* Commands that has the `[ADMIN]` tag can only be used by a bot admin. (See [bot documentation](https://github.com/EpiX0R/fruk0st_bot))
 
 * Parameters that begin with a question mark (`<?parameter>`) is an optional paramter.
 
-Report any bugs here: [EpiX0R/fika_bot Issues on GitHub](https://github.com/EpiX0R/fika_bot/issues).
+Report any bugs here: [EpiX0R/fruk0st_bot Issues on GitHub](https://github.com/EpiX0R/fruk0st_bot/issues).
 
 ## help
 
