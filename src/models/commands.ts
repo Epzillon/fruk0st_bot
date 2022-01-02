@@ -6,6 +6,6 @@ import * as Discord from "discord.js";
 export type Command = {
     name: string;
     description: string;
-    parameters: Array<string>;
+    usage: string[];
     execute: (message: Discord.Message) => void;
 };

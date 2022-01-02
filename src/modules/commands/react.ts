@@ -8,8 +8,6 @@ import settings from "../../settings.json";
 
 import constants from "../constants";
 
-const { COMMAND_PREFIX } = constants;
-
 const reactImgFolder = "./assets/img/reaction/";
 
 /**
@@ -17,8 +15,8 @@ const reactImgFolder = "./assets/img/reaction/";
  */
 const react: Command = {
     name: "react",
-    description: "Sends the reaction image <name>.",
-    parameters: ["name"],
+    description: "Allows you to use reaction images.",
+    usage: ["add <name>", "remove <name>", "<name>"],
     execute: executeReact,
 };
 
@@ -28,8 +26,7 @@ const react: Command = {
  * @param {Discord.Message} message The Discord message which called the command.
  */
 function executeReact(message: Discord.Message): void {
-    // Only serve commands if .env COMMAND_PREFIX is set.
-    const commandStr = message.content.split(COMMAND_PREFIX)[1];
+    const commandStr = message.content.split(constants.COMMAND_PREFIX)[1];
     const parameters = commandStr.split(" ");
 
     // Switch based on sub-command
@@ -113,7 +110,7 @@ function addReaction(name: string, message: Discord.Message): void {
         io.saveDiscordMessageAttachments(name, reactImgFolder, attachments);
 
         channel.send(
-            `:white_check_mark: Created reaction \`${name}\`! You can now use it with \`${COMMAND_PREFIX}react ${name}\`! :white_check_mark:`,
+            `:white_check_mark: Created reaction \`${name}\`! You can now use it with \`${constants.COMMAND_PREFIX}react ${name}\`! :white_check_mark:`,
         );
     } else {
         channel.send(

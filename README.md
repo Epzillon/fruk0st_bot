@@ -33,9 +33,7 @@ towards the need of the Fikabröd Discord server.
 ### 1.2. Command List
 <a name="command-list"></a>
 
-* `help` - DM's the user the available commands for the bot.
-* `react [name]` - Displays a reaction image in the chat.
-* `react [add | remove] [name]` - Adds (the attached image) or removes a reaction image from the bot. [Admin Only]
+You can find the descriptions and usage instructions for commands [here](https://github.com/EpiX0R/fika_bot/blob/master/COMMANDS.md).
 
 
 ## 2. Pre-requisites
