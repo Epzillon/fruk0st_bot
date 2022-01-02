@@ -1,4 +1,4 @@
-# Fika Bot (PLACEHOLDER)
+# Fruk0st Bot (PLACEHOLDER)
 
 An all-around bot for the Fruk0stkubben Discord server.
 
