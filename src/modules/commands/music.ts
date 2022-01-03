@@ -20,6 +20,9 @@ class Music implements CommandInterface {
         const parameters = commandStr.split(" ");
 
         switch (parameters[1]) {
+            case "play":
+                this.tryPlayMusic(message);
+                break;
             case "join":
                 this.tryJoinChannel(message);
                 break;
@@ -56,6 +59,14 @@ class Music implements CommandInterface {
         } catch (error) {
             Logger.error("Trying to leave voice channel:\n" + error);
         }
+    }
+
+    private tryPlayMusic(message: Discord.Message){
+        this.tryJoinChannel(message);
+
+        // find url in message
+        // attempt to connect to source
+        // attempt to play sound
     }
 }
 
