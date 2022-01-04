@@ -1,12 +1,12 @@
 import * as Discord from "discord.js";
 import fs from "fs";
-import * as io from "../../io";
+import * as FileHelper from "../../io/FileHelper";
 import Path from "path";
 
-import CommandInterface from "../../../models/CommandInterface";
 import settings from "../../../settings.json";
 
 import constants from "../../constants";
+import CommandInterface from "../../../models/CommandInterface";
 
 class Lore implements CommandInterface {
     public name = "lore";
@@ -53,7 +53,7 @@ class Lore implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in lore text folder and finds the file specified.
-        const availableLores = io.getLoreTexts();
+        const availableLores = FileHelper.getLoreTexts();
         let loreFilename = availableLores[0];
 
         // Assure filename is safe and not PathLike
@@ -63,7 +63,7 @@ class Lore implements CommandInterface {
 
         // Sends the file if it was found, otherwise sends error message.
         if (loreFilename !== undefined) {
-            let text = io.readTextFile(this.loreFolder + loreFilename);
+            let text = FileHelper.readTextFile(this.loreFolder + loreFilename);
             if (text.length > 0) {
                 channel.send("\`\`\`" + text + "\`\`\`");
             } else {
@@ -88,7 +88,7 @@ class Lore implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in lore text folder and finds the file specified.
-        const availableLores = io.getLoreTexts();
+        const availableLores = FileHelper.getLoreTexts();
         let loreFilename = availableLores[0];
 
         // Assure filename is safe and not PathLike
@@ -98,7 +98,7 @@ class Lore implements CommandInterface {
 
         // Sends the file if it was found, otherwise sends error message.
         if (loreFilename !== undefined) {
-            let text = io.readTextFile(this.loreFolder + loreFilename);
+            let text = FileHelper.readTextFile(this.loreFolder + loreFilename);
             
             // Fix invalid formatting
             if (text.length > 0 && text.slice(-1) === ".") {
@@ -110,7 +110,7 @@ class Lore implements CommandInterface {
             // Add everything after "#!lore add " to lore textfile
             text += message.content.split("#!lore add ")[1]
 
-            io.writeTextFile(this.loreFolder + loreFilename, text);
+            FileHelper.writeTextFile(this.loreFolder + loreFilename, text);
             channel.send(`${author}.\n\n:white_check_mark: Added lore to ${loreFilename}! :white_check_mark:`);
         } else {
             channel.send(`${author}.\n\n:x: Something went wrong. :x:`);
@@ -136,7 +136,7 @@ class Lore implements CommandInterface {
         }
 
         // Retrieves all filenames in lore text folder and finds the file specified.
-        const availableLores = io.getLoreTexts();
+        const availableLores = FileHelper.getLoreTexts();
         let loreFilename = availableLores[0];
 
         // Assure filename is safe and not PathLike
@@ -146,7 +146,7 @@ class Lore implements CommandInterface {
 
         // Sends the file if it was found, otherwise sends error message.
         if (loreFilename !== undefined) {
-            io.writeTextFile(this.loreFolder + loreFilename, "");
+            FileHelper.writeTextFile(this.loreFolder + loreFilename, "");
             channel.send(`${author}.\n\n:white_check_mark: Resetted the lore in ${loreFilename}! :white_check_mark:`);
         } else {
             channel.send(`${author}.\n\n:x: Something went wrong. :x:`);

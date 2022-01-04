@@ -1,6 +1,5 @@
 import * as Discord from "discord.js";
 import fs from "fs";
-import * as io from "../../io";
 import Path from "path";
 
 import CommandInterface  from "../../../models/CommandInterface";

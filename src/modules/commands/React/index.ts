@@ -1,6 +1,6 @@
 import * as Discord from "discord.js";
 import fs from "fs";
-import * as io from "../../io";
+import * as FileHelper from "../../io/FileHelper";
 import Path from "path";
 
 import CommandInterface  from "../../../models/CommandInterface";
@@ -52,7 +52,7 @@ class React implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = io.getReactionImages();
+        const availableReactions = FileHelper.getReactionImages();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Assure filename is safe and not PathLike
@@ -86,7 +86,7 @@ class React implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = io.getReactionImages();
+        const availableReactions = FileHelper.getReactionImages();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Check if user is in the admin list in settings.json.
@@ -102,7 +102,7 @@ class React implements CommandInterface {
 
         // Creates the file if it was not found, otherwise sends error message.
         if (reactionFilename === undefined) {
-            io.saveDiscordMessageAttachments(name, reactImgFolder, attachments);
+            FileHelper.saveDiscordMessageAttachments(name, reactImgFolder, attachments);
 
             channel.send(
                 `:white_check_mark: Created reaction \`${name}\`! You can now use it with \`${constants.COMMAND_PREFIX}react ${name}\`! :white_check_mark:`,
@@ -131,7 +131,7 @@ class React implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = io.getReactionImages();
+        const availableReactions = FileHelper.getReactionImages();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Check if user is in the admin list in settings.json.
