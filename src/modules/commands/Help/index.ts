@@ -1,6 +1,6 @@
 import * as Discord from "discord.js";
 
-import CommandInterface from "../../models/CommandInterface";
+import CommandInterface from "../../../models/CommandInterface";
 
 class Help implements CommandInterface {
     public name = "help";

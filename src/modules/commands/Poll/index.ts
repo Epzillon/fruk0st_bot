@@ -1,12 +1,12 @@
 import * as Discord from "discord.js";
 import fs from "fs";
-import * as io from "../io";
+import * as io from "../../io";
 import Path from "path";
 
-import CommandInterface  from "../../models/CommandInterface";
-import settings from "../../settings.json";
+import CommandInterface  from "../../../models/CommandInterface";
+import settings from "../../../settings.json";
 
-import constants from "../constants";
+import constants from "../../constants";
 
 class Poll implements CommandInterface {
     public name = "poll";
