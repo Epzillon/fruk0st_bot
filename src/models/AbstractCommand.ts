@@ -1,6 +1,6 @@
 import Discord from "discord.js";
 import CommandInterface from "./CommandInterface";
-import Logger from "../modules/io/logger";
+import Logger from "../modules/io/Logger";
 
 class AbstractCommand implements CommandInterface {
     public name = "command";
