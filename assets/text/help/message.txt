@@ -1,1 +1,3 @@
-Hello, stranger! You can find the descriptions and usage instructions for commands here:\nhttps://github.com/EpiX0R/fruk0st_bot/blob/master/COMMANDS.md
+Hello, stranger! You can find the descriptions and usage instructions for commands here:
+
+https://github.com/EpiX0R/fruk0st_bot/blob/master/COMMANDS.md
