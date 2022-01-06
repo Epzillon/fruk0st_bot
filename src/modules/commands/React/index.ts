@@ -1,6 +1,6 @@
 import * as Discord from "discord.js";
 import ReactService from "./Service/ReactService";
-import AbstractCommand from "../../../models/AbstractCommand";
+import AbstractCommand from "models/AbstractCommand";
 
 class React extends AbstractCommand {
     public name = "react";

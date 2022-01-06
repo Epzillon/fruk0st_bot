@@ -1,6 +1,6 @@
 import * as Discord from "discord.js";
-import AbstractCommand from "../../../models/AbstractCommand";
-import HelpService from "./Service/HelpService";
+import AbstractCommand from "models/AbstractCommand";
+import HelpService from "modules/commands/Help/Service/HelpService";
 
 class Help extends AbstractCommand {
     public name = "help";

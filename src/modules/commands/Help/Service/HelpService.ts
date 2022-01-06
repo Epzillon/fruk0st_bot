@@ -1,5 +1,5 @@
 import Discord from "discord.js";
-import * as FileHelper from "../../../io/FileHelper";
+import * as FileHelper from "modules/io/FileHelper";
 
 class HelpService {
     private helpMessage = FileHelper.readTextFileContent("assets/text/help/message.txt");
