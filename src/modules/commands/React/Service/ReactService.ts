@@ -1,42 +1,12 @@
-import * as Discord from "discord.js";
+import Discord from "discord.js";
 import fs from "fs";
-import * as io from "../io";
+import * as FileHelper from "../../../io/FileHelper";
+import constants from "../../../constants";
 import Path from "path";
+import settings from "../../../../settings.json";
 
-import CommandInterface  from "../../models/CommandInterface";
-import settings from "../../settings.json";
-
-import constants from "../constants";
-
-const reactImgFolder = "./assets/img/reaction/";
-
-class React implements CommandInterface {
-    public name = "react";
-    public description = "Allows you to use reaction images.";
-    public usage = ["add <name>", "remove <name>", "<name>"];
-
-    /**
-     * Handles the execution of the "react" command and its sub-commands.
-     *
-     * @param {Discord.Message} message The Discord message which called the command.
-     */
-    public execute(message: Discord.Message): void {
-        const commandStr = message.content.split(constants.COMMAND_PREFIX)[1];
-        const parameters = commandStr.split(" ");
-
-        // Switch based on sub-command
-        switch (parameters[1]) {
-            case "add":
-                this.addReaction(parameters[2], message);
-                break;
-            case "remove":
-                this.removeReaction(parameters[2], message);
-                break;
-            default:
-                this.sendReaction(parameters[1], message);
-                break;
-        }
-    }
+class ReactService {
+    private reactImgFolder = "./assets/img/reaction/";
 
     /**
      * Handler for "react [name]".
@@ -47,12 +17,12 @@ class React implements CommandInterface {
      * @param {String} name The name of the reaction.
      * @param {Discord.Message} message The Discord message which called the command.
      */
-    private sendReaction(name: string, message: Discord.Message): void {
+     public sendReaction(name: string, message: Discord.Message): void {
         const author = message.author;
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = io.getReactionImages();
+        const availableReactions = FileHelper.getReactionImageList();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Assure filename is safe and not PathLike
@@ -62,7 +32,7 @@ class React implements CommandInterface {
 
         // Sends the file if it was found, otherwise sends error message.
         if (reactionFilename !== undefined) {
-            channel.send({ files: [reactImgFolder + reactionFilename] });
+            channel.send({ files: [this.reactImgFolder + reactionFilename] });
         } else {
             channel.send(`${author}.\n\n:x: The reaction \`${name}\` does not exist. :x:`);
         }
@@ -79,14 +49,14 @@ class React implements CommandInterface {
      * @param {String} name The name of the emote to be added.
      * @param {Discord.Message} message: The message which called the command.
      */
-    private addReaction(name: string, message: Discord.Message): void {
+    public addReaction(name: string, message: Discord.Message): void {
         const admins = settings.admin_list;
         const author = message.author;
         const attachments = message.attachments;
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = io.getReactionImages();
+        const availableReactions = FileHelper.getReactionImageList();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Check if user is in the admin list in settings.json.
@@ -102,7 +72,7 @@ class React implements CommandInterface {
 
         // Creates the file if it was not found, otherwise sends error message.
         if (reactionFilename === undefined) {
-            io.saveDiscordMessageAttachments(name, reactImgFolder, attachments);
+            FileHelper.saveDiscordMessageAttachments(name, this.reactImgFolder, attachments);
 
             channel.send(
                 `:white_check_mark: Created reaction \`${name}\`! You can now use it with \`${constants.COMMAND_PREFIX}react ${name}\`! :white_check_mark:`,
@@ -125,13 +95,13 @@ class React implements CommandInterface {
      * @param {String} name The name of the emote to be added.
      * @param {Discord.Message} message: The message which called the command.
      */
-    private removeReaction(name: string, message: Discord.Message): void {
+    public removeReaction(name: string, message: Discord.Message): void {
         const admins = settings.admin_list;
         const author = message.author;
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = io.getReactionImages();
+        const availableReactions = FileHelper.getReactionImageList();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Check if user is in the admin list in settings.json.
@@ -147,7 +117,7 @@ class React implements CommandInterface {
 
         // Creates the file if it was not found, otherwise sends error message.
         if (reactionFilename !== undefined) {
-            fs.unlinkSync(reactImgFolder + reactionFilename);
+            fs.unlinkSync(this.reactImgFolder + reactionFilename);
 
             channel.send(`:white_check_mark: Removed reaction \`${name}\`! :white_check_mark:`);
         } else {
@@ -156,4 +126,4 @@ class React implements CommandInterface {
     }
 }
 
-export default React;
+export default new ReactService;
