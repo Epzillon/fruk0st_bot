@@ -12,6 +12,8 @@ class Poll extends AbstractCommand {
      * @param {Discord.Message} message The Discord message which called the command.
      */
     public execute(message: Discord.Message): void {
+        super.execute(message);
+
         const commandParameters = super.getCommandParameters();
 
         switch (commandParameters[1]) {
