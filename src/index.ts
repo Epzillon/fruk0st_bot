@@ -1,10 +1,9 @@
 // Imports
 import * as Discord from "discord.js";
-import chalk from "chalk";
-import constants from "./modules/constants";
-import Logger from "./modules/io/Logger";
+import constants from "modules/constants";
+import Logger from "modules/io/Logger";
 
-import MessageHandler from "./modules/handlers/message";
+import MessageHandler from "modules/handlers/message";
 
 // Create client interface and prepare handler
 const client = new Discord.Client();

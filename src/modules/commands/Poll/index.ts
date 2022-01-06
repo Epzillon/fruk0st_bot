@@ -1,5 +1,5 @@
 import * as Discord from "discord.js";
-import AbstractCommand from "../../../models/AbstractCommand";
+import AbstractCommand from "models/AbstractCommand";
 
 class Poll extends AbstractCommand {
     public name = "poll";

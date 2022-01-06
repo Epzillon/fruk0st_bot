@@ -1,9 +1,9 @@
 import Discord from "discord.js";
 import fs from "fs";
-import * as FileHelper from "../../../io/FileHelper";
-import constants from "../../../constants";
+import * as FileHelper from "modules/io/FileHelper";
+import constants from "modules/constants";
 import Path from "path";
-import settings from "../../../../settings.json";
+import settings from "settings.json";
 
 class ReactService {
     private reactImgFolder = "./assets/img/reaction/";

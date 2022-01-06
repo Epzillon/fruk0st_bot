@@ -1,7 +1,6 @@
 import * as Discord from "discord.js";
-import constants from "../../constants";
-import AbstractCommand from "../../../models/AbstractCommand";
-import LoreService from "./Service/LoreService";
+import AbstractCommand from "models/AbstractCommand";
+import LoreService from "modules/commands/Lore/Service/LoreService";
 
 class Lore extends AbstractCommand {
     public name = "lore";

@@ -1,10 +1,10 @@
 import Discord from "discord.js";
 import fs from "fs";
-import * as FileHelper from "../../../io/FileHelper";
-import LoreHelper from "../Helper/LoreHelper";
+import * as FileHelper from "modules/io/FileHelper";
+import LoreHelper from "modules/commands/Lore/Helper/LoreHelper";
 import Path from "path";
-import settings from "../../../../settings.json";
-import Logger from "../../../io/Logger";
+import settings from "settings.json";
+import Logger from "modules/io/Logger";
 
 /**
  * TODO: Feature multiple lore files through filename parameter

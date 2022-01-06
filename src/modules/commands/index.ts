@@ -1,9 +1,9 @@
-import CommandInterface from "../../models/CommandInterface";
+import CommandInterface from "models/CommandInterface";
 
-import Help from "./Help";
-import React from "./React";
-import Poll from "./Poll";
-import Lore from "./Lore";
+import Help from "modules/commands/Help";
+import React from "modules/commands/React";
+import Poll from "modules/commands/Poll";
+import Lore from "modules/commands/Lore";
 
 let HelpCommand = new Help();
 let ReactCommand = new React();
