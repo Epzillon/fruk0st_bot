@@ -52,7 +52,7 @@ class React implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = FileHelper.getReactionImages();
+        const availableReactions = FileHelper.getReactionImageList();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Assure filename is safe and not PathLike
@@ -86,7 +86,7 @@ class React implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = FileHelper.getReactionImages();
+        const availableReactions = FileHelper.getReactionImageList();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Check if user is in the admin list in settings.json.
@@ -131,7 +131,7 @@ class React implements CommandInterface {
         const channel = message.channel;
 
         // Retrieves all filenames in reaction image folder and finds the file specified.
-        const availableReactions = FileHelper.getReactionImages();
+        const availableReactions = FileHelper.getReactionImageList();
         let reactionFilename = availableReactions.find((file) => file.split(".")[0] === name);
 
         // Check if user is in the admin list in settings.json.
