@@ -16,10 +16,9 @@ class Lore extends AbstractCommand {
     public execute(message: Discord.Message): void {
         super.execute(message);
 
-        const commandStr = message.content.split(constants.COMMAND_PREFIX)[1];
-        const parameters = commandStr.split(" ");
+        const commandParameters = super.getCommandParameters();
 
-        switch (parameters[1]) {
+        switch (commandParameters[1]) {
             case "add":
                 LoreService.addLore(message);
                 break;
