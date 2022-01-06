@@ -1,5 +1,6 @@
 import * as Discord from "discord.js";
 import AbstractCommand from "../../../models/AbstractCommand";
+import HelpService from "./Service/HelpService";
 
 class Help extends AbstractCommand {
     public name = "help";
@@ -12,13 +13,13 @@ class Help extends AbstractCommand {
      * @param {Discord.Message} message The Discord message which called upon the command.
      */
     public execute(message: Discord.Message): void {
-        super.execute(message);
+        const commandParameters = super.getCommandParameters();
 
-        const author = message.author;
-
-        author.send(
-            "Hello, stranger! You can find the descriptions and usage instructions for commands here:\nhttps://github.com/EpiX0R/fruk0st_bot/blob/master/COMMANDS.md",
-        );
+        switch (commandParameters[1]) {
+            default:
+                HelpService.sendHelpMessage(message.author);
+                break;
+        }
     }
 }
 
