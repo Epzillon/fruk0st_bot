@@ -1,9 +1,9 @@
 import * as Discord from "discord.js";
 
-import Logger from "../io/logger";
-import CommandInterface from "../../models/CommandInterface";
+import Logger from "modules/io/logger";
+import CommandInterface from "models/CommandInterface";
 
-import constants from "../constants";
+import constants from "constants";
 
 class Music implements CommandInterface {
     public name = "music";
