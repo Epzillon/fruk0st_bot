@@ -4,6 +4,7 @@ import Help from "modules/commands/Help";
 import React from "modules/commands/React";
 import Poll from "modules/commands/Poll";
 import Lore from "modules/commands/Lore";
+import Music from "modules/commands/Music";
 
 let HelpCommand = new Help();
 let ReactCommand = new React();
