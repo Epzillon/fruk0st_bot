@@ -1,7 +1,7 @@
 import * as Discord from "discord.js";
 
-import commands from "../commands";
-import constants from "../constants";
+import commands from "modules/commands";
+import constants from "modules/constants";
 
 /**
  * Handler for commands. Used in the MessageHandler.
