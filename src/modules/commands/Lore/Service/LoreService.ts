@@ -11,7 +11,7 @@ import Logger from "../../../io/Logger";
  */
 class LoreService {
     private loreFolder = "./assets/text/lore/";
-    private availableLores = FileHelper.getLoreTexts();
+    private availableLores = FileHelper.getLoreTextList();
     private selectedLore: fs.PathLike = Path.basename(this.availableLores[0]);
 
     /**
@@ -25,7 +25,7 @@ class LoreService {
     public sendLore(message: Discord.Message): void {
         const channel = message.channel;
 
-        let text = FileHelper.readTextFile(this.loreFolder + this.selectedLore);
+        let text = FileHelper.readTextFileContent(this.loreFolder + this.selectedLore);
 
         try {
             channel.send("\`\`\`" + text + "\`\`\`");
@@ -40,7 +40,7 @@ class LoreService {
      * @param {Discord.Message} message The Discord message which called the command.
      */
     public addLore(message: Discord.Message): void {
-        let loreText = FileHelper.readTextFile(this.loreFolder + this.selectedLore);
+        let loreText = FileHelper.readTextFileContent(this.loreFolder + this.selectedLore);
         let newContent = message.content.split("#!lore add ")[1];
 
         loreText += newContent;

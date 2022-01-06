@@ -39,7 +39,7 @@ export function saveDiscordMessageAttachments(
  *
  * @returns {string[]} The filenames as strings in an array.
  */
-export function getReactionImages(): string[] {
+export function getReactionImageList(): string[] {
     const files = fs.readdirSync(reactImgFolder);
 
     return files;
@@ -50,7 +50,7 @@ export function getReactionImages(): string[] {
  *
  * @returns {string[]} The filenames as strings in an array.
  */
-export function getLoreTexts(): string[] {
+export function getLoreTextList(): string[] {
     const files = fs.readdirSync(loreFolder);
 
     return files;
@@ -61,7 +61,7 @@ export function getLoreTexts(): string[] {
  *
  * @returns {string} The content of the file.
  */
-export function readTextFile(filename: string): string {
+export function readTextFileContent(filename: string): string {
     let content = fs.readFileSync(filename, "utf-8");
 
     return content;
