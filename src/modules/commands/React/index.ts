@@ -25,7 +25,9 @@ class React extends AbstractCommand {
                 ReactService.removeReaction(commandParameters[2], message);
                 break;
             default:
-                ReactService.sendReaction(commandParameters[1], message);
+                if (commandParameters[1]) {
+                    ReactService.sendReaction(commandParameters[1], message);
+                }
                 break;
         }
     }
